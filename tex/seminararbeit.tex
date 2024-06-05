@@ -46,15 +46,14 @@ TBD
 % Abschnitte mit \section, Unterabschnitte mit \subsection und
 % Unterunterabschnitte mit \subsubsection
 % -------------------------------------------------------
-\section{Entstehung von DevOps und der Weg zu DevSecOps}
-In der heutigen Zeit gewinnt das DevOps-Prinzip im Softwareentwicklungszyklus zunehmend an Bedeutung. DevOps fördert die Integration von Entwicklung und Betrieb und verkürzt die bisherige Trennung zwischen diesen Bereichen. Dieser Ansatz wird durch das Prinzip "you build it, you run it" verkörpert, welches die Verantwortlichkeit für den gesamten Lebenszyklus einer Anwendung in die Hände der Entwickler legt.
+\section{Abstract}
+In der heutigen Zeit gewinnt das DevOps-Prinzip im Softwareentwicklungszyklus zunehmend an Bedeutung. DevOps fördert die Integration von Entwicklung (Development) und Betrieb (Operations) und verringert somit die bisherige Trennung dieser beiden Bereichen. Dieser Ansatz wird durch das Prinzip "you build it, you run it" verkörpert, welches die Verantwortlichkeit für den gesamten Lebenszyklus einer Anwendung in die Hände der Entwickler legt.
 
-Ein wesentlicher Aspekt dieser Integration ist die Sicherheit, die traditionell als separater Schritt behandelt wurde. Der "shift left" Ansatz integriert Sicherheitsaspekte frühzeitig und kontinuierlich in den Softwareentwicklungsprozess. Dies bedeutet, dass Sicherheitsmaßnahmen nicht nur in der Entwicklungsphase, sondern auch während des Betriebs berücksichtigt werden müssen.
+Der wesentlicher Aspekt von DevSecOps ist die Integration von Sicherheit, welche traditionell als separater Schritt behandelt wurde, in den DevOps Kreislauf. Der "shift left" Ansatz integriert Sicherheitsaspekte frühzeitig und kontinuierlich in den Softwareentwicklungsprozess. Dies bedeutet, dass Sicherheitsmaßnahmen nicht nur in der Entwicklungsphase, sondern auch während des Betriebs berücksichtigt werden müssen.
 
 In dieser Arbeit liegt der Schwerpunkt auf der Implementierung von Quality Gates, die darauf abzielen, die Sicherheit von Software zu erhöhen. Insbesondere wird der Fokus auf das Dependency Scanning zur Identifikation bekannter Sicherheitslücken und die statische Code-Analyse gelegt, um potenzielle Fehler und Schwachstellen im Code frühzeitig zu erkennen.
 
 Durch diese Maßnahmen wird nicht nur die Sicherheit der Software verbessert, sondern auch die Effizienz des gesamten Entwicklungsprozesses gesteigert. Die Bedeutung dieser Ansätze wird im Kontext moderner Softwareentwicklung erläutert und durch praxisnahe Beispiele und Fallstudien untermauert.
-
 
 Diese Arbeit richtet sich an Software-Entwickler und IT-Fachleute, die DevOps und DevSecOps einführen möchten. Ziel ist es, die Sicherheit und Qualität ihrer Software-Releases zu verbessern. Leser sollten grundlegendes Wissen über Softwareentwicklung und IT-Betrieb haben und daran interessiert sein, Sicherheits- und Qualitätsstrategien sowie Security-Gates in ihren Entwicklungsprozess zu integrieren. Die Arbeit bietet anhand von zwei Beispielen eine Implementierung sowie Best Practices, um eine sichere und effiziente Softwareentwicklung zu gewährleisten.
 
@@ -69,7 +68,7 @@ Der Begriff DevOps entstand Ende der 2000er Jahre und beschreibt die engere Zusa
 DevOps ist als eine Kultur und Praxis zu verstehen, die Entwicklung und Betrieb integriert. Ziel ist es, durch automatisierte Prozesse und verbesserte Zusammenarbeit eine qualitativ hochwertige und reproduzierbar betreibbare Software schneller bereitzustellen.
 
 \subsection{TBD: Zusammenarbeit zwischen Entwicklung und Betrieb}
-Traditionell arbeiteten Entwicklung und Betrieb isoliert, was zu Kommunikationsproblemen und Verzögerungen führte. DevOps fördert die enge Zusammenarbeit beider Teams, um schnell auf Marktveränderungen zu reagieren und die Softwarequalität zu verbessern.
+Traditionell arbeiteten Entwicklung und Betrieb isoliert, was zu Kommunikationsproblemen und Verzögerungen führte. DevOps fördert die enge Zusammenarbeit beider Teams, um schnell auf Marktveränderungen zu reagieren und die Softwarequalität zu verbessern. ~\cite{Virmani2015}
 
 
 \subsection{TBD: Prinzipien der kontinuierlichen Integration und kontinuierlichen Bereitstellung (CI/CD)}
@@ -77,7 +76,8 @@ Kontinuierliche Integration (CI): Entwickler integrieren regelmäßig ihren Code
 
 Kontinuierliche Bereitstellung (CD): Automatisiert die Bereitstellung von Softwareänderungen in verschiedene Umgebungen, sodass jede erfolgreiche Änderung schnell und zuverlässig an Endnutzer ausgeliefert werden kann.
 
-
+\subsection{TBD: Entstehung von DevSecOps}
+DevSecOps steht als Abkürzung von "Development, Security \& Operations"
 
 
 % -------------------------------------------------------

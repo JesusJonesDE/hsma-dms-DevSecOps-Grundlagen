@@ -1,12 +1,13 @@
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {1}Entstehung von DevOps und der Weg zu DevSecOps}{1}{section.1}%
+\contentsline {section}{\numberline {1}Abstract}{1}{section.1}%
 \contentsline {section}{\numberline {2}Historische Entwicklung von DevOps zu DevSecOps}{1}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Entstehung von DevOps und der Weg zu DevSecOps}{1}{subsection.3}%
+\contentsline {subsection}{\numberline {2.1}Entstehung von DevOps und der Weg zu DevSecOps}{2}{subsection.3}%
 \contentsline {subsection}{\numberline {2.2}TBD: Zusammenarbeit zwischen Entwicklung und Betrieb}{2}{subsection.4}%
 \contentsline {subsection}{\numberline {2.3}TBD: Prinzipien der kontinuierlichen Integration und kontinuierlichen Bereitstellung (CI/CD)}{2}{subsection.5}%
-\contentsline {section}{\numberline {3}Integration von Sicherheitspraktiken in den DevOps-Zyklus}{2}{section.6}%
-\contentsline {subsection}{\numberline {3.1}Nutzung von Statischer Code Analyse}{2}{subsection.7}%
-\contentsline {subsection}{\numberline {3.2}Dependency Scanning und Überprüfung auf Sicherheitslücken}{2}{subsection.8}%
-\contentsline {section}{\numberline {4}Fazit}{3}{section.9}%
-\contentsline {section}{Abkürzungen}{3}{section*.10}%
-\contentsline {section}{Literatur}{3}{section*.10}%
+\contentsline {subsection}{\numberline {2.4}TBD: Entstehung von DevSecOps}{2}{subsection.6}%
+\contentsline {section}{\numberline {3}Integration von Sicherheitspraktiken in den DevOps-Zyklus}{2}{section.7}%
+\contentsline {subsection}{\numberline {3.1}Nutzung von Statischer Code Analyse}{2}{subsection.8}%
+\contentsline {subsection}{\numberline {3.2}Dependency Scanning und Überprüfung auf Sicherheitslücken}{3}{subsection.9}%
+\contentsline {section}{\numberline {4}Fazit}{3}{section.10}%
+\contentsline {section}{Abkürzungen}{3}{section*.11}%
+\contentsline {section}{Literatur}{3}{section*.11}%
