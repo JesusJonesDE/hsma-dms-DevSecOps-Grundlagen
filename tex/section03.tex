@@ -1,0 +1,32 @@
+\section{Integration von Sicherheitspraktiken in den DevOps-Zyklus}
+In diesem Kapitel wird anhand von statischer Code-Analyse und Dependency Scanning aufgezeigt, wie Sicherheitslücken erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden.
+
+
+\subsection{Nutzung von Statischer Code Analyse}
+Die Nutzung von statischer Code-Analyse ist ein essenzieller Bestandteil moderner Softwareentwicklungsprozesse, um die Codequalität und Sicherheit zu gewährleisten. Es gibt eine Vielzahl von Tools zur Durchführung dieser Analysen, darunter SonarQube, ESLint, Pylint und Coverity. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von SonarQube, basierend auf ihrer umfangreichen Erfahrung und den Vorteilen, die SonarQube bietet. SonarQube wird häufig gewählt, weil es eine umfassende Analyse für eine Vielzahl von Programmiersprachen bietet und sich nahtlos in verschiedene CI/CD-Tools integrieren lässt.
+
+Durch die Integration von SonarQube in den CI/CD-Prozess kann diese Analyse automatisiert und kontinuierlich durchgeführt werden. Innerhalb des GitFlow-Workflows ermöglicht es die Einrichtung von Quality Gates in SonarQube, die spezifische Richtlinien und Kriterien definieren, die der Code erfüllen muss. Wenn diese Quality Gates durch die in SonarQube hinterlegten Policies fehlschlagen, wird der Build-Prozess unterbrochen und ein Merge in ein Release verhindert. Dadurch wird sichergestellt, dass nur qualitativ hochwertiger und sicherer Code in die Produktionsumgebung gelangt, wodurch das Risiko von Sicherheitslücken und anderen Problemen erheblich reduziert wird.
+
+Die Integration von SonarQube in GitHub Actions ermöglicht eine nahtlose Automatisierung dieser Prozesse. Ein typisches Setup könnte wie folgt aussehen:
+
+\begin{itemize}
+\item SonarQube Scanner Action: Eine GitHub Action, die SonarQube-Scans ausführt, wird im Workflow definiert. Diese Action wird typischerweise nach dem Build-Schritt und vor dem Deployment-Schritt ausgeführt.
+\item Quality Gates: SonarQube überprüft den Code gegen die definierten Quality Gates. Wenn der Code die Kriterien nicht erfüllt, schlägt die Action fehl.
+\item Berechtigungen anpassen: Für den Release-Branch müssen möglicherweise die Berechtigungen angepasst werden, um sicherzustellen, dass nur Builds, die die Quality Gates bestehen, gemergt werden können. Dies kann durch die Einrichtung von Branch Protection Rules in GitHub erreicht werden, die verhindern, dass fehlerhafter Code in den Release-Branch gelangt.
+\end{itemize}
+
+Durch diese Integration und die Anpassung der Berechtigungen für den Release-Branch wird sichergestellt, dass nur geprüfter und qualitativ hochwertiger Code in die Produktionsumgebung gelangt, was die Sicherheit und Zuverlässigkeit der Software erheblich verbessert.
+
+
+\subsection{Dependency Scanning und Überprüfung auf Sicherheitslücken}
+Dependency Scanning und die Überprüfung auf Sicherheitslücken sind kritische Schritte im Softwareentwicklungsprozess, um sicherzustellen, dass alle verwendeten Bibliotheken und Abhängigkeiten sicher und auf dem neuesten Stand sind. Es gibt mehrere Tools, die für diesen Zweck verwendet werden können, darunter Sonatype Nexus IQ, Snyk und OWASP Dependency-Check. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von Sonatype Nexus IQ aufgrund ihrer umfassenden Erfahrung und der weitreichenden Fähigkeiten dieses Tools.
+
+Sonatype Nexus IQ bietet umfassende Unterstützung für eine Vielzahl von Programmiersprachen und Paketmanagern, darunter Java (Maven, Gradle), JavaScript (npm, Yarn), Python (pip), Ruby (RubyGems), und viele mehr. Dieses Tool ermöglicht es Entwicklern, Sicherheitslücken in ihren Abhängigkeiten frühzeitig zu erkennen und zu beheben, bevor diese in die Produktion gelangen.
+
+Die Integration von Sonatype Nexus IQ in den CI/CD-Prozess kann automatisiert werden, um kontinuierlich die verwendeten Abhängigkeiten zu scannen und zu überprüfen. Dies kann zum Beispiel durch die Nutzung von GitHub Actions realisiert werden. Ein typischer Workflow könnte wie folgt aussehen:
+
+\begin{itemize}
+\item Nexus IQ Scan Action: Eine GitHub Action, die einen Scan mit Nexus IQ ausführt, wird im Workflow definiert. Diese Action wird typischerweise nach dem Build-Schritt und vor dem Deployment-Schritt ausgeführt.
+\item Policy Enforcement: Sonatype Nexus IQ überprüft die Abhängigkeiten gegen die definierten Sicherheitsrichtlinien. Wenn eine Sicherheitslücke entdeckt wird, schlägt die Action fehl und verhindert so einen Merge oder Release des fehlerhaften Codes.
+\item Berechtigungen anpassen: Für den Release-Branch müssen möglicherweise die Berechtigungen angepasst werden, um sicherzustellen, dass nur Builds, die die Sicherheitsrichtlinien bestehen, gemergt werden können. Dies kann durch die Einrichtung von Branch Protection Rules in GitHub erreicht werden, die verhindern, dass fehlerhafte Abhängigkeiten in den Release-Branch gelangen.
+\end{itemize}
