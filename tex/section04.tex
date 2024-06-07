@@ -1,12 +1,12 @@
 \section{Integration von Dependency Scanning und Überprüfung auf Sicherheitslücken in den DevOps-Zyklus}
-In diesem Kapitel wird anhand von Dependency Scanning und der Überprüfung auf Sicherheitslücken aufgezeigt, wie Sicherheitslücken in Abhängigkeiten erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden.
+In diesem Kapitel wird anhand von Dependency Scanning und der Überprüfung auf Sicherheitslücken aufgezeigt, wie Sicherheitslücken in Abhängigkeiten erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden \cite{Vasquez2018}.
 
 \subsection{Nutzung von Dependency Scanning}
-Dependency Scanning und die Überprüfung auf Sicherheitslücken sind kritische Schritte im Softwareentwicklungsprozess, um sicherzustellen, dass alle verwendeten Bibliotheken und Abhängigkeiten sicher und auf dem neuesten Stand sind. Es gibt mehrere Tools, die für diesen Zweck verwendet werden können, darunter Sonatype Nexus IQ, Snyk und OWASP Dependency-Check. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von Sonatype Nexus IQ aufgrund ihrer umfassenden Erfahrung und der weitreichenden Fähigkeiten dieses Tools.
+Dependency Scanning und die Überprüfung auf Sicherheitslücken sind kritische Schritte im Softwareentwicklungsprozess, um sicherzustellen, dass alle verwendeten Bibliotheken und Abhängigkeiten sicher und auf dem neuesten Stand sind \cite{Stevens2020}. Es gibt mehrere Tools, die für diesen Zweck verwendet werden können, darunter Sonatype Nexus IQ, Snyk und OWASP Dependency-Check \cite{OWASP2023}. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von Sonatype Nexus IQ aufgrund ihrer umfassenden Erfahrung und der weitreichenden Fähigkeiten dieses Tools.
 
 \subsubsection{Übersicht ähnlicher Produkte}
 
-Es gibt verschiedene Tools, die zur Überprüfung von Abhängigkeiten auf Sicherheitslücken verwendet werden können. Die folgende Tabelle gibt eine Übersicht über einige gängige Tools:
+Es gibt verschiedene Tools, die zur Überprüfung von Abhängigkeiten auf Sicherheitslücken verwendet werden können. Die Tabelle \ref{tab:dependency_scanning_tools} gibt eine Übersicht über einige gängige Tools:
 
 \begin{table*}[h!]
 \centering
@@ -28,10 +28,10 @@ Black Duck & Mehrere & Proprietär & Umfassende Open-Source-Risikoanalyse \\ \hl
 Sonatype Nexus IQ ist ein fortschrittliches Tool zur Analyse von Abhängigkeiten und zur Erkennung von Sicherheitslücken. Es arbeitet durch:
 
 \begin{itemize}
-    \item \textbf{Scannen der Abhängigkeiten}: Analysiert alle im Projekt verwendeten Abhängigkeiten.
-    \item \textbf{Abgleich mit Datenbanken}: Vergleicht Abhängigkeiten mit bekannten Schwachstellen in öffentlichen und privaten Datenbanken.
-    \item \textbf{Policy Enforcement}: Überprüft Abhängigkeiten gegen vordefinierte Sicherheitsrichtlinien und Policies.
-    \item \textbf{Berichterstellung}: Generiert Berichte und Warnungen über erkannte Sicherheitslücken und Risiken.
+    \item \textbf{Scannen der Abhängigkeiten}: Analysiert alle im Projekt verwendeten Abhängigkeiten \cite{Sonatype2020}.
+    \item \textbf{Abgleich mit Datenbanken}: Vergleicht Abhängigkeiten mit bekannten Schwachstellen in öffentlichen und privaten Datenbanken \cite{Sonatype2020}.
+    \item \textbf{Policy Enforcement}: Überprüft Abhängigkeiten gegen vordefinierte Sicherheitsrichtlinien und Policies \cite{Sonatype2020}.
+    \item \textbf{Berichterstellung}: Generiert Berichte und Warnungen über erkannte Sicherheitslücken und Risiken \cite{Sonatype2020}.
 \end{itemize}
 
 \begin{figure*}[h!]
@@ -43,7 +43,7 @@ Sonatype Nexus IQ ist ein fortschrittliches Tool zur Analyse von Abhängigkeiten
 
 \subsubsection{Vorteile von Sonatype Nexus IQ}
 
-Die Verwendung von Sonatype Nexus IQ bietet zahlreiche Vorteile:
+Die Verwendung von Sonatype Nexus IQ bietet zahlreiche Vorteile \cite{Sonatype2020}:
 
 \begin{itemize}
     \item \textbf{Umfassende Sicherheitsanalyse}: Erkennt eine Vielzahl von Schwachstellen in Abhängigkeiten.
@@ -59,7 +59,7 @@ Ein typisches Setup für die Integration von Sonatype Nexus IQ in GitHub Actions
 
 \paragraph{Einrichtung der GitHub Actions Workflow-Datei}
 
-Erstellen Sie im Wurzelverzeichnis Ihres Repositories eine Datei namens \texttt{.github/workflows/nexus-iq.yml} mit folgendem Inhalt:
+Hierzu dient eine Datei im Wurzelverzeichnis des Repositories namens \texttt{.github/workflows/nexus-iq.yml} mit folgendem Inhalt \cite{GitHub2020}:
 
 \begin{lstlisting}
 name: Nexus IQ Analysis
@@ -107,7 +107,7 @@ jobs:
 
 \subsubsection{Integration in den GitFlow}
 
-Die Integration von Dependency Scanning in den GitFlow-Prozess folgt einem ähnlichen Muster wie bei der statischen Code Analyse:
+Die Integration von Dependency Scanning in den GitFlow-Prozess folgt einem ähnlichen Muster wie bei der statischen Code Analyse \cite{Driessen2010b}:
 
 \begin{itemize}
     \item \textbf{Feature-Branches}: Scannen der Abhängigkeiten während der Entwicklung neuer Features.
@@ -119,16 +119,16 @@ Die Integration von Dependency Scanning in den GitFlow-Prozess folgt einem ähnl
 \paragraph{Beispielhafte Umsetzung in GitHub}
 
 \begin{enumerate}
-    \item Forken des Repository und erstellen eines neuen Branch: \texttt{git checkout -b feature/new-feature develop}
-    \item Implementierung des neuen Features und push der Änderungen: \texttt{git push origin feature/new-feature}
-    \item Öffnen eines Pull Request von \texttt{feature/new-feature} nach \texttt{develop}.
+    \item Forke das Repository und erstelle einen neuen Branch: \texttt{git checkout -b feature/new-feature develop}
+    \item Implementiere das neue Feature und pushe die Änderungen: \texttt{git push origin feature/new-feature}
+    \item Öffne einen Pull Request von \texttt{feature/new-feature} nach \texttt{develop}.
     \item Die CI/CD-Pipeline führt das Dependency Scanning mit Sonatype Nexus IQ durch.
     \item Bestehen alle Checks, kann der Branch gemerged werden.
 \end{enumerate}
 
 \subsubsection{Sicherheitsgewinn durch Dependency Scanning}
 
-Die Integration von Dependency Scanning und der Überprüfung auf Sicherheitslücken in den CI/CD-Prozess bietet erhebliche Sicherheitsvorteile:
+Die Integration von Dependency Scanning und der Überprüfung auf Sicherheitslücken in den CI/CD-Prozess bietet erhebliche Sicherheitsvorteile \cite{Vasquez2018}:
 
 \begin{itemize}
     \item \textbf{Früherkennung von Sicherheitslücken}: Sicherheitslücken in Abhängigkeiten werden frühzeitig erkannt und können behoben werden, bevor sie in die Produktionsumgebung gelangen.
@@ -138,7 +138,7 @@ Die Integration von Dependency Scanning und der Überprüfung auf Sicherheitslü
 
 \subsubsection{Warnhinweise und Einschränkungen}
 
-Es ist wichtig zu beachten, dass trotz der Verwendung von Tools wie Sonatype Nexus IQ Sicherheitslücken in Abhängigkeiten dennoch vorhanden sein können. Entwickler sollten sich dessen bewusst sein und folgende Vorsichtsmaßnahmen treffen:
+Es ist wichtig zu beachten, dass trotz der Verwendung von Tools wie Sonatype Nexus IQ Sicherheitslücken in Abhängigkeiten dennoch vorhanden sein können \cite{Sonatype2021}. Entwickler sollten sich dessen bewusst sein und folgende Vorsichtsmaßnahmen treffen:
 
 \begin{itemize}
     \item \textbf{Regelmäßige Updates}: Stellen Sie sicher, dass alle Abhängigkeiten regelmäßig auf die neuesten Versionen aktualisiert werden.
@@ -149,7 +149,7 @@ Es ist wichtig zu beachten, dass trotz der Verwendung von Tools wie Sonatype Nex
 
 \subsubsection{Details zu OWASP}
 
-Die Open Web Application Security Project (OWASP) bietet eine Vielzahl von Ressourcen zur Verbesserung der Software-Sicherheit. Das OWASP Top Ten Projekt ist eine jährlich aktualisierte Liste der am häufigsten auftretenden und kritischsten Sicherheitsrisiken für Webanwendungen. Einige der in Sonatype Nexus IQ integrierten OWASP-Regeln umfassen:
+Das Open Web Application Security Project (OWASP) bietet eine Vielzahl von Ressourcen zur Verbesserung der Software-Sicherheit. Das OWASP Top Ten Projekt ist eine jährlich aktualisierte Liste der am häufigsten auftretenden und kritischsten Sicherheitsrisiken für Webanwendungen \cite{OWASP2023}. Einige der in Sonatype Nexus IQ integrierten OWASP-Regeln umfassen:
 
 \begin{itemize}
     \item \textbf{Injection}: Schutz vor verschiedenen Injektionstypen, einschließlich SQL-Injection.
@@ -161,4 +161,4 @@ Die Open Web Application Security Project (OWASP) bietet eine Vielzahl von Resso
 
 \subsubsection{Schlussfolgerungen und Best Practices}
 
-Die Integration von Dependency Scanning in den CI/CD-Prozess verbessert nicht nur die Sicherheit der Software, sondern trägt auch zur Einhaltung von Compliance-Richtlinien bei. Tools wie Sonatype Nexus IQ bieten umfassende Analysen und automatisierte Policy Enforcement, um Sicherheitslücken frühzeitig zu erkennen und zu beheben. Es ist jedoch entscheidend, Sicherheitsmaßnahmen kontinuierlich zu überwachen und anzupassen, um den höchsten Sicherheitsstandard zu gewährleisten.
+Die Integration von Dependency Scanning in den CI/CD-Prozess verbessert nicht nur die Sicherheit der Software, sondern trägt auch zur Einhaltung von Compliance-Richtlinien bei. Tools wie Sonatype Nexus IQ bieten umfassende Analysen und automatisierte Policy Enforcement, um Sicherheitslücken frühzeitig zu erkennen und zu beheben \cite{Sonatype2023}. Es ist jedoch entscheidend, Sicherheitsmaßnahmen kontinuierlich zu überwachen und anzupassen, um den höchsten Sicherheitsstandard zu gewährleisten.

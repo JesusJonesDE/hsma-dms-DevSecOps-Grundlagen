@@ -2393,6 +2393,23 @@
     <bcf:citekey order="15" intorder="1">SonarSource2023</bcf:citekey>
     <bcf:citekey order="16" intorder="1">Driessen2010</bcf:citekey>
     <bcf:citekey order="17" intorder="1">SonarSource2021b</bcf:citekey>
+<<<<<<< Updated upstream
+=======
+    <bcf:citekey order="18" intorder="1">Vasquez2018</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">Stevens2020</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">OWASP2023</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">Sonatype2020</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">Sonatype2020</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">Sonatype2020</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">Sonatype2020</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">Sonatype2020</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">GitHub2020</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">Driessen2010b</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">Vasquez2018</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">Sonatype2021</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">OWASP2023</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">Sonatype2023</bcf:citekey>
+>>>>>>> Stashed changes
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
