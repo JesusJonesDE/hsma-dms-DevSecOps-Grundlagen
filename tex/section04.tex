@@ -1,44 +1,68 @@
-\section{Integration von DevSecOps in den Software Development Lifecycle}
+\section{Integration von Dependency Scanning und Überprüfung auf Sicherheitslücken in den DevOps-Zyklus}
+In diesem Kapitel wird anhand von Dependency Scanning und der Überprüfung auf Sicherheitslücken aufgezeigt, wie Sicherheitslücken in Abhängigkeiten erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden.
 
-\subsection{Statische Code Analyse}
+\subsection{Nutzung von Dependency Scanning}
+Dependency Scanning und die Überprüfung auf Sicherheitslücken sind kritische Schritte im Softwareentwicklungsprozess, um sicherzustellen, dass alle verwendeten Bibliotheken und Abhängigkeiten sicher und auf dem neuesten Stand sind. Es gibt mehrere Tools, die für diesen Zweck verwendet werden können, darunter Sonatype Nexus IQ, Snyk und OWASP Dependency-Check. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von Sonatype Nexus IQ aufgrund ihrer umfassenden Erfahrung und der weitreichenden Fähigkeiten dieses Tools.
 
-Statische Code Analyse ist ein entscheidender Schritt im DevSecOps-Prozess, um die Sicherheit und Qualität des Codes bereits frühzeitig im Entwicklungsprozess zu gewährleisten. Durch den Einsatz von Tools zur statischen Code Analyse können potenzielle Sicherheitslücken, Code-Smells und andere Qualitätsprobleme automatisch erkannt werden. In diesem Kapitel werden wir die Integration von statischer Code Analyse in eine CI/CD-Pipeline anhand von SonarQube und GitHub Actions demonstrieren.
+\subsubsection{Übersicht ähnlicher Produkte}
 
-\subsubsection{Übersicht der Tools zur statischen Code Analyse}
+Es gibt verschiedene Tools, die zur Überprüfung von Abhängigkeiten auf Sicherheitslücken verwendet werden können. Die folgende Tabelle gibt eine Übersicht über einige gängige Tools:
 
-Es gibt eine Vielzahl von Tools, die zur statischen Code Analyse eingesetzt werden können. Die folgende Tabelle gibt eine Übersicht über einige gängige Tools:
-
-\begin{table}[h!]
+\begin{table*}[h!]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
 \textbf{Tool} & \textbf{Programmiersprachen} & \textbf{Lizenz} & \textbf{Besonderheiten} \\ \hline
-SonarQube & Mehrere & Open Source & Umfangreiche Analyse, Integration in CI/CD \\ \hline
-ESLint & JavaScript, TypeScript & Open Source & Speziell für JavaScript, konfigurierbar \\ \hline
-Checkmarx & Mehrere & Proprietär & Fokus auf Sicherheit \\ \hline
-PMD & Java, Apex & Open Source & Regelbasierte Analyse \\ \hline
-Bandit & Python & Open Source & Sicherheitsanalyse für Python \\ \hline
+Sonatype Nexus IQ & Mehrere & Proprietär & Umfassende Sicherheitsanalyse, Policy Enforcement \\ \hline
+Snyk & Mehrere & Proprietär & Echtzeit-Schwachstellenüberprüfung, Entwicklungsintegration \\ \hline
+OWASP Dependency-Check & Mehrere & Open Source & Fokus auf bekannte Sicherheitslücken \\ \hline
+WhiteSource & Mehrere & Proprietär & Automatisierte Open-Source-Sicherheit und Compliance \\ \hline
+Black Duck & Mehrere & Proprietär & Umfassende Open-Source-Risikoanalyse \\ \hline
 \end{tabular}
-\caption{Übersicht von Tools zur statischen Code Analyse}
-\label{tab:static_code_analysis_tools}
-\end{table}
+\caption{Übersicht von Tools zur Überprüfung von Abhängigkeiten}
+\label{tab:dependency_scanning_tools}
+\end{table*}
 
-\subsubsection{Integration von SonarQube in die CI/CD-Pipeline}
+\subsubsection{Funktionsweise von Sonatype Nexus IQ}
 
-SonarQube ist ein weit verbreitetes Tool zur statischen Code Analyse, das eine nahtlose Integration in CI/CD-Pipelines unterstützt. Im Folgenden wird gezeigt, wie SonarQube mit GitHub Actions integriert werden kann, um eine automatisierte Analyse des Codes durchzuführen.
+Sonatype Nexus IQ ist ein fortschrittliches Tool zur Analyse von Abhängigkeiten und zur Erkennung von Sicherheitslücken. Es arbeitet durch:
 
-\paragraph{Einrichtung von SonarQube}
+\begin{itemize}
+    \item \textbf{Scannen der Abhängigkeiten}: Analysiert alle im Projekt verwendeten Abhängigkeiten.
+    \item \textbf{Abgleich mit Datenbanken}: Vergleicht Abhängigkeiten mit bekannten Schwachstellen in öffentlichen und privaten Datenbanken.
+    \item \textbf{Policy Enforcement}: Überprüft Abhängigkeiten gegen vordefinierte Sicherheitsrichtlinien und Policies.
+    \item \textbf{Berichterstellung}: Generiert Berichte und Warnungen über erkannte Sicherheitslücken und Risiken.
+\end{itemize}
 
-1. Installation und Konfiguration von SonarQube.
-2. Erstellung eines neuen Projekts in SonarQube.
-3. Generierung eines Tokens für die Authentifizierung in GitHub Actions.
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=\textwidth]{nexusiq_dashboard.png}
+\caption{Beispiel eines Sonatype Nexus IQ Dashboards}
+\label{fig:nexusiq_dashboard}
+\end{figure*}
 
-\paragraph{Konfiguration der GitHub Actions Workflow-Datei}
+\subsubsection{Vorteile von Sonatype Nexus IQ}
 
-Erstellen Sie im Wurzelverzeichnis Ihres Repositories eine Datei namens \texttt{.github/workflows/sonarqube.yml} mit folgendem Inhalt:
+Die Verwendung von Sonatype Nexus IQ bietet zahlreiche Vorteile:
 
-\begin{verbatim}
-name: SonarQube Analysis
+\begin{itemize}
+    \item \textbf{Umfassende Sicherheitsanalyse}: Erkennt eine Vielzahl von Schwachstellen in Abhängigkeiten.
+    \item \textbf{Automatisierte Policy Enforcement}: Stellt sicher, dass nur sichere und konforme Abhängigkeiten verwendet werden.
+    \item \textbf{Integration in CI/CD}: Kann nahtlos in bestehende CI/CD-Pipelines integriert werden.
+    \item \textbf{Detaillierte Berichte}: Bietet umfangreiche Berichte und Dashboards zur Überwachung der Sicherheit.
+    \item \textbf{Regelmäßige Updates}: Erhält kontinuierliche Updates zu neuen Sicherheitslücken und Bedrohungen.
+\end{itemize}
+
+\subsubsection{Beispiel Implementierung für GitHub Actions}
+
+Ein typisches Setup für die Integration von Sonatype Nexus IQ in GitHub Actions könnte wie folgt aussehen:
+
+\paragraph{Einrichtung der GitHub Actions Workflow-Datei}
+
+Erstellen Sie im Wurzelverzeichnis Ihres Repositories eine Datei namens \texttt{.github/workflows/nexus-iq.yml} mit folgendem Inhalt:
+
+\begin{lstlisting}
+name: Nexus IQ Analysis
 
 on:
   push:
@@ -51,7 +75,7 @@ on:
       - develop
 
 jobs:
-  sonarQube:
+  nexusIQ:
     runs-on: ubuntu-latest
 
     steps:
@@ -63,55 +87,34 @@ jobs:
       with:
         java-version: '11'
 
-    - name: Cache SonarQube packages
+    - name: Cache Nexus IQ packages
       uses: actions/cache@v2
       with:
-        path: ~/.sonar/cache
-        key: ${{ runner.os }}-sonar-cache
-        restore-keys: ${{ runner.os }}-sonar-cache
+        path: ~/.nexus/cache
+        key: ${{ runner.os }}-nexus-cache
+        restore-keys: ${{ runner.os }}-nexus-cache
 
     - name: Install dependencies
       run: ./gradlew build -x test
 
-    - name: Run SonarQube analysis
+    - name: Run Nexus IQ analysis
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: ./gradlew sonarqube -Dsonar.projectKey=my_project_key -Dsonar.host.url=https://sonarqube.mycompany.com -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-\end{verbatim}
+        NEXUS_IQ_URL: ${{ secrets.NEXUS_IQ_URL }}
+        NEXUS_IQ_USERNAME: ${{ secrets.NEXUS_IQ_USERNAME }}
+        NEXUS_IQ_PASSWORD: ${{ secrets.NEXUS_IQ_PASSWORD }}
+      run: ./gradlew nexusIqScan -Dsonar.projectKey=my_project_key -Dsonar.host.url=${{ secrets.NEXUS_IQ_URL }} -Dsonar.login=${{ secrets.NEXUS_IQ_USERNAME }} -Dsonar.password=${{ secrets.NEXUS_IQ_PASSWORD }}
+\end{lstlisting}
 
-\paragraph{Branch-Regeln und Merge-Policies}
+\subsubsection{Integration in den GitFlow}
 
-Um sicherzustellen, dass nur Code, der den definierten Sicherheitsstandards entspricht, in die Haupt-Branches integriert wird, können Branch-Regeln und Merge-Policies in GitHub konfiguriert werden. Hierbei wird beispielsweise das Mergen von Branches blockiert, die den OWASP-Standards in SonarQube nicht entsprechen.
-
-\begin{itemize}
-    \item Gehe zu den Einstellungen des Repositories auf GitHub.
-    \item Wähle \textit{Branches} und dann \textit{Branch protection rules}.
-    \item Erstelle eine neue Regel für den \textit{main} und \textit{develop} Branch.
-    \item Aktiviere die Option \textit{Require status checks to pass before merging} und füge den SonarQube-Status hinzu.
-\end{itemize}
-
-\subsection{Beispielkonfiguration und Demonstration}
-
-\subsubsection{Erstellung und Verwendung des GitFlow-Modells}
-
-Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit Feature-Branches und Release-Branches strukturiert. Es wird folgendermaßen implementiert:
+Die Integration von Dependency Scanning in den GitFlow-Prozess folgt einem ähnlichen Muster wie bei der statischen Code Analyse:
 
 \begin{itemize}
-    \item \textbf{main}: Enthält den Produktionscode.
-    \item \textbf{develop}: Basis für neue Features.
-    \item \textbf{feature-branches}: Abgeleitet von \textit{develop}, für die Entwicklung neuer Features.
-    \item \textbf{release-branches}: Vorbereitung für neue Releases.
-    \item \textbf{hotfix-branches}: Dringende Korrekturen auf dem \textit{main}-Branch.
+    \item \textbf{Feature-Branches}: Scannen der Abhängigkeiten während der Entwicklung neuer Features.
+    \item \textbf{Develop-Branch}: Regelmäßiges Scannen vor dem Mergen von Feature-Branches.
+    \item \textbf{Release-Branches}: Finales Scannen vor der Freigabe neuer Releases.
+    \item \textbf{Hotfix-Branches}: Schnelles Scannen bei dringenden Fehlerbehebungen.
 \end{itemize}
-
-\paragraph{Workflow-Illustration}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\textwidth]{gitflow_workflow.png}
-\caption{Illustration des GitFlow-Modells}
-\label{fig:gitflow}
-\end{figure}
 
 \paragraph{Beispielhafte Umsetzung in GitHub}
 
@@ -119,24 +122,43 @@ Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit
     \item Forke das Repository und erstelle einen neuen Branch: \texttt{git checkout -b feature/new-feature develop}
     \item Implementiere das neue Feature und pushe die Änderungen: \texttt{git push origin feature/new-feature}
     \item Öffne einen Pull Request von \texttt{feature/new-feature} nach \texttt{develop}.
-    \item Die CI/CD-Pipeline führt die statische Code Analyse mit SonarQube durch.
+    \item Die CI/CD-Pipeline führt das Dependency Scanning mit Sonatype Nexus IQ durch.
     \item Bestehen alle Checks, kann der Branch gemerged werden.
 \end{enumerate}
 
-\paragraph{Screenshots und Ergebnisinterpretation}
+\subsubsection{Sicherheitsgewinn durch Dependency Scanning}
 
-Fügen Sie hier passende Screenshots ein, die die Ergebnisse der SonarQube-Analyse und den Workflow der GitHub Actions demonstrieren.
+Die Integration von Dependency Scanning und der Überprüfung auf Sicherheitslücken in den CI/CD-Prozess bietet erhebliche Sicherheitsvorteile:
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=\textwidth]{sonarqube_results.png}
-\caption{Ergebnisse der SonarQube-Analyse}
-\label{fig:sonarqube_results}
-\end{figure}
+\begin{itemize}
+    \item \textbf{Früherkennung von Sicherheitslücken}: Sicherheitslücken in Abhängigkeiten werden frühzeitig erkannt und können behoben werden, bevor sie in die Produktionsumgebung gelangen.
+    \item \textbf{Kontinuierliche Überwachung}: Durch kontinuierliches Scannen werden neue Schwachstellen sofort erkannt.
+    \item \textbf{Compliance und Sicherheit}: Durchsetzen von Sicherheitsrichtlinien und Compliance-Anforderungen.
+\end{itemize}
+
+\subsubsection{Warnhinweise und Einschränkungen}
+
+Es ist wichtig zu beachten, dass trotz der Verwendung von Tools wie Sonatype Nexus IQ Sicherheitslücken in Abhängigkeiten dennoch vorhanden sein können. Entwickler sollten sich dessen bewusst sein und folgende Vorsichtsmaßnahmen treffen:
+
+\begin{itemize}
+    \item \textbf{Regelmäßige Updates}: Stellen Sie sicher, dass alle Abhängigkeiten regelmäßig auf die neuesten Versionen aktualisiert werden.
+    \item \textbf{Manuelle Überprüfungen}: Ergänzen Sie automatisierte Scans durch manuelle Überprüfungen und Sicherheitsaudits.
+    \item \textbf{Bewusstsein und Schulung}: Schulen Sie das Entwicklungsteam in Best Practices der sicheren Softwareentwicklung.
+    \item \textbf{Kontinuierliche Verbesserung}: Passen Sie Sicherheitsrichtlinien und -prozesse kontinuierlich an neue Bedrohungen und Schwachstellen an.
+\end{itemize}
+
+\subsubsection{Details zu OWASP}
+
+Die Open Web Application Security Project (OWASP) bietet eine Vielzahl von Ressourcen zur Verbesserung der Software-Sicherheit. Das OWASP Top Ten Projekt ist eine jährlich aktualisierte Liste der am häufigsten auftretenden und kritischsten Sicherheitsrisiken für Webanwendungen. Einige der in Sonatype Nexus IQ integrierten OWASP-Regeln umfassen:
+
+\begin{itemize}
+    \item \textbf{Injection}: Schutz vor verschiedenen Injektionstypen, einschließlich SQL-Injection.
+    \item \textbf{Broken Authentication}: Überprüfung auf Schwachstellen in der Authentifizierung.
+    \item \textbf{Sensitive Data Exposure}: Sicherstellung der Verschlüsselung sensibler Daten.
+    \item \textbf{XML External Entities (XXE)}: Erkennung von Schwachstellen, die durch externe XML-Entitäten verursacht werden.
+    \item \textbf{Broken Access Control}: Verhinderung von unbefugtem Zugriff auf Ressourcen.
+\end{itemize}
 
 \subsubsection{Schlussfolgerungen und Best Practices}
 
-Die Integration von statischer Code Analyse in den CI/CD-Prozess verbessert nicht nur die Codequalität, sondern trägt auch zur Erhöhung der Sicherheit bei. Durch den Einsatz von Tools wie SonarQube in Kombination mit GitHub Actions und strikten Branch-Regeln können potenzielle Schwachstellen frühzeitig erkannt und behoben werden.
-
-
-\end{document}
+Die Integration von Dependency Scanning in den CI/CD-Prozess verbessert nicht nur die Sicherheit der Software, sondern trägt auch zur Einhaltung von Compliance-Richtlinien bei. Tools wie Sonatype Nexus IQ bieten umfassende Analysen und automatisierte Policy Enforcement, um Sicherheitslücken frühzeitig zu erkennen und zu beheben. Es ist jedoch entscheidend, Sicherheitsmaßnahmen kontinuierlich zu überwachen und anzupassen, um den höchsten Sicherheitsstandard zu gewährleisten.

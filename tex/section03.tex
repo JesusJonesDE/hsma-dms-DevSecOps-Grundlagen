@@ -10,7 +10,7 @@ Durch die Integration von SonarQube in den CI/CD-Prozess kann diese Analyse auto
 
 Es gibt eine Vielzahl von Tools, die zur statischen Code Analyse eingesetzt werden können. Die folgende Tabelle gibt eine Übersicht über einige gängige Tools:
 
-\begin{table}[h!]
+\begin{table*}[h!]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -23,7 +23,7 @@ Bandit & Python & Open Source & Sicherheitsanalyse für Python \\ \hline
 \end{tabular}
 \caption{Übersicht von Tools zur statischen Code Analyse}
 \label{tab:static_code_analysis_tools}
-\end{table}
+\end{table*}
 
 \subsubsection{Integration von SonarQube in die CI/CD-Pipeline}
 
@@ -33,7 +33,7 @@ SonarQube ist ein weit verbreitetes Tool zur statischen Code Analyse, das eine n
 
 SonarQube kann auf verschiedene Weise eingerichtet werden: lokal, als SaaS oder on-premise. Eine einfache Möglichkeit zur lokalen Einrichtung bietet Docker. Die folgende \texttt{docker-compose.yml} Datei zeigt ein Beispiel:
 
-\begin{verbatim}
+\begin{lstlisting}
 version: '3'
 
 services:
@@ -51,61 +51,18 @@ services:
       POSTGRES_USER: sonar
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonarqube
-\end{verbatim}
+\end{lstlisting}
 
 \paragraph{Integration mit verschiedenen CI/CD-Tools}
 
 Neben GitHub Actions kann SonarQube auch in andere CI/CD-Tools integriert werden, wie z.B. GitLab CI/CD und Azure DevOps.
 
-\paragraph{Integration mit GitLab CI/CD}
-
-Erstellen Sie eine \texttt{.gitlab-ci.yml} Datei im Root-Verzeichnis des Projekts:
-
-\begin{verbatim}
-stages:
-  - build
-  - test
-  - sonarqube
-
-build:
-  stage: build
-  script:
-    - ./gradlew build -x test
-
-sonarqube:
-  stage: sonarqube
-  script:
-    - ./gradlew sonarqube -Dsonar.projectKey=my_project_key -Dsonar.host.url=https://sonarqube.mycompany.com -Dsonar.login=$SONAR_TOKEN
-\end{verbatim}
-
-\paragraph{Integration mit Azure DevOps}
-
-In Azure DevOps können Sie eine Pipeline über das UI oder durch Erstellen einer \texttt{azure-pipelines.yml} Datei konfigurieren:
-
-\begin{verbatim}
-trigger:
-- main
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- task: UseJava@1
-  inputs:
-    versionSpec: '11'
-    jdkArchitectureOption: 'x64'
-    
-- script: |
-    ./gradlew build -x test
-    ./gradlew sonarqube -Dsonar.projectKey=my_project_key -Dsonar.host.url=https://sonarqube.mycompany.com -Dsonar.login=$(SONAR_TOKEN)
-  displayName: 'Run SonarQube analysis'
-\end{verbatim}
 
 \paragraph{Konfiguration der GitHub Actions Workflow-Datei}
 
 Erstellen Sie im Wurzelverzeichnis Ihres Repositories eine Datei namens \texttt{.github/workflows/sonarqube.yml} mit folgendem Inhalt:
 
-\begin{verbatim}
+\begin{lstlisting}
 name: SonarQube Analysis
 
 on:
@@ -145,7 +102,7 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: ./gradlew sonarqube -Dsonar.projectKey=my_project_key -Dsonar.host.url=https://sonarqube.mycompany.com -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-\end{verbatim}
+\end{lstlisting}
 
 \paragraph{Branch-Regeln und Merge-Policies}
 
@@ -188,12 +145,12 @@ Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit
 
 \paragraph{Workflow-Illustration}
 
-
-\begin{figure}[h!]
-  \includegraphics[width=\linewidth]{img/gitflow_workflow.png}
-  \caption{Illustration des GitFlow-Modells}
-  \label{fig:gitflow}
-\end{figure}
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=\textwidth]{img/gitflow_workflow.png}
+\caption{Illustration des GitFlow-Modells}
+\label{fig:gitflow}
+\end{figure*}
 
 \paragraph{Beispielhafte Umsetzung in GitHub}
 
@@ -209,19 +166,19 @@ Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit
 
 Fügen Sie hier passende Screenshots ein, die die Ergebnisse der SonarQube-Analyse und den Workflow der GitHub Actions demonstrieren.
 
-\begin{figure}[h!]
+\begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{sonarqube_results.png}
+\includegraphics[width=\textwidth]{img/sonarqube_results.jpeg}
 \caption{Ergebnisse der SonarQube-Analyse}
 \label{fig:sonarqube_results}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[h!]
+\begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{github_actions_failed_quality_gate.png}
+\includegraphics[width=\textwidth]{img/github_actions_failed_quality_gate.png}
 \caption{GitHub Actions Workflow mit fehlgeschlagenem Quality Gate}
 \label{fig:github_actions_failed_quality_gate}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Metriken in SonarQube}
 
@@ -237,12 +194,12 @@ SonarQube bietet eine Vielzahl von Metriken, um die Qualität und Sicherheit des
 
 \paragraph{Beispielhaftes SonarQube Dashboard}
 
-\begin{figure}[h!]
+\begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{sonarqube_dashboard.png}
+\includegraphics[width=\textwidth]{img/sonarqube_dashboard.png}
 \caption{Beispiel eines SonarQube Dashboards}
 \label{fig:sonarqube_dashboard}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Schlussfolgerungen und Best Practices}
 
