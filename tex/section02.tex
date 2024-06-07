@@ -1,14 +1,30 @@
-\section{Historische Entwicklung von DevOps zu DevSecOps}
-Dieses Kapitel zeigt die Entstehung der DevOps-Kultur auf und wie der logische Schritt zu DevSecOps vollzogen wurde.
+\section{Security by Design}
+Security by Design kann als eines der Kernprinzipien von DevSecOps betrachtet werden. Es besteht aus den in den folgenden Unterkapiteln beschriebenen Bestandteilen.
 
-\subsection{Entstehung von DevOps und der Weg zu DevSecOps}
-Der Begriff DevOps entstand Ende der 2000er Jahre und beschreibt die engere Zusammenarbeit von Software-Entwicklung und IT-Betrieb. In der Vergangenheit – und teilweise auch heute noch – führten die Kluft zwischen Abteilungen und unklare Zuständigkeiten oft zu Problemen, die erst dann sichtbar wurden, wenn eine Abteilung, die nicht in die Entwicklung involviert war, eine Software oder ein Softwaresystem mit meist manuellen Schritten in den Produktivbetrieb übernehmen sollte. Durch das DevOps-Prinzip können solche Probleme frühzeitig erkannt werden, insbesondere durch ein T-Shaped-Entwicklungsteam, in dem auch Kenntnisse im Betrieb von Software vorhanden sind.
+\subsection{Frühe Integration}
+Die frühe Integration von Sicherheitsaspekten stellt sicher, dass diese bereits in der initialen Design- und Architekturplanungsphase berücksichtigt werden. Dazu werden Sicherheitsspezialisten in diese Phasen involviert, um potenzielle Sicherheitsrisiken und -lücken zu identifizieren und sichere Systeme zu entwickeln. Wenn von Anfang an ein Fokus auf Sicherheit gelegt wird, können spätere Anpassungen vermieden werden, welche deutliche Mehrkosten verursachen würden, wie bereits unter "shift left" beschrieben.
 
-DevOps ist als eine Kultur und Praxis zu verstehen, die Entwicklung und Betrieb integriert. Ziel ist es, durch automatisierte Prozesse und verbesserte Zusammenarbeit eine qualitativ hochwertige und reproduzierbar betreibbare Software schneller bereitzustellen.
+\subsection{Threat Modeling}
+Im Rahmen von sogenannten Gefahren Modellierungen,  werden potenzielle Bedrohungen und Schwachstellen identifiziert, um ein Verständnis dafür zu entwickeln, wie ein Angreifer das System kompromittieren könnte. Die Entwickler begeben sich selbst also auf die Seite eines potentiellen Angreifers und versuchen ihre eigene Anwendung anzugreifen. Diese Simulation ermöglicht es den Entwicklern ein Gefühl dafür zu entwickeln, wie potentielle Angreifer agieren könnten und ermöglicht somit die Planung von Verteidigungsmaßnahmen.
 
-\subsection{TBD: Zusammenarbeit zwischen Entwicklung und Betrieb}
-Traditionell arbeiteten Entwicklung und Betrieb isoliert, was zu Kommunikationsproblemen und Verzögerungen führte. DevOps fördert die enge Zusammenarbeit beider Teams, um schnell auf Marktveränderungen zu reagieren und die Softwarequalität zu verbessern.
+\subsection{Sichere Programmierstandards und -praktiken}
+Die Implementierung und Durchsetzung sicherer Programmierstandards und -praktiken zur Vermeidung von gängigen Schwachstellen wie SQL-Injection, Cross-Site-Scripting (XSS) und Buffer Overflows ist ein wichtiger Baustein um Anwendungen sicherer zu gestalten. Dies beinhaltet regelmäßige Code-Reviews oder bspw. statische Code-Analyse welche in einem späteren Kapitel noch näher betrachtet wird.
 
+\subsection{Continuous Monitoring}
+Continuous Monitoring bezeichnet die kontinuierliche Überwachung von Anwendungen und Infrastruktur hinsichtlich sicherheitsrelevanter Schwachstellen und Vorfälle. Dies beinhaltet den Einsatz von Sicherheitsinformations- und Ereignismanagement-Systemen (SIEM), Intrusion Detection/Prevention-Systemen (IDS/IPS) sowie weiterer Monitoring-Tools. Da Angreifer einen höheren Schaden verursachen können, je länger sie unentdeckt bleiben, ist es essentiell durch Continuous Monitoring diese schnellstmöglich zu erkennen.
+
+\subsection{DevSecOps Culture}
+Die DevSecOps-Kultur zielt darauf ab, eine Kultur der gemeinsamen Verantwortung für die Sicherheit über die Grenzen von Entwicklung, Betrieb und Sicherheit hinweg zu fördern. Dies beinhaltet regelmäßige Trainings- und Sensibilisierungsprogramme für Entwickler und Betriebspersonal zu Sicherheits best Practices. Wenn sich jede Person die Teil des Softwareentwicklungsprozesses ist für Sicherheit mit Verantwortlich fühlt, können Fehler schneller gefunden und behoben werden.
+
+\subsection{Configuration Management}
+Das Configuration Management gewährleistet eine sichere Konfiguration aller Komponenten des Software-Stacks, einschließlich Server, Datenbanken und Netzwerkgeräte. Dies erfolgt durch den Einsatz von Configuration-Management-Tools zur Durchsetzung von Sicherheitsrichtlinien sowie regelmäßige Überprüfungen der Konfigurationen. Somit kann sichergestellt werden, das jeder Entwickler sich an die Vorgegebenen Sicherheitsstandards hält. Eine Fehler in der Konfiguration eines einzelnen Entwicklers kann schnell dazu führen, dass ein gesamtes System komprimiert wird, denn ein Angreifer durch einen einzelnen Eintrittspunkt sich durch das gesamte System arbeiten kann.
+
+\subsection{Incident Response Planning}
+Incident Response Planning bezeichnet die Vorbereitung auf potenzielle Sicherheitsvorfälle durch die Entwicklung und Prüfung von Notfallplänen. Dadurch kann das Team schnell und effektiv auf Sicherheitsverletzungen reagieren und diese beheben. Das selbe Prinzip ist bereits seit Langem beispielsweise bei Feuerprobealarmen oder Probeeinsätzen der Fall. Durch Übung des Ernstfalles kann Sichergestellt werden, dass alle Beteiligten routiniert sind und Chaos vermieden wird.
+
+
+\subsection{Compliance and Governance}	
+Die Sicherstellung der Konformität des Software-Entwicklungsprozesses mit relevanten Industriestandards, Regularien und Best-Practice-Ansätzen ist Gegenstand der Compliance- und Governance-Aktivitäten. Dies beinhaltet regelmäßige Audits und Assessments zur Überprüfung der Compliance. Im Idealfall werden diese Audits durch externe Drittanbieter vollzogen, um eine Unvoreingenommene Einschätzung zu erhalten.
 
 \subsection{TBD: Prinzipien der kontinuierlichen Integration und kontinuierlichen Bereitstellung (CI/CD)}
 Kontinuierliche Integration (CI): Entwickler integrieren regelmäßig ihren Code in ein zentrales Repository, gefolgt von automatisierten Builds und Tests, um Fehler frühzeitig zu erkennen und zu beheben.
