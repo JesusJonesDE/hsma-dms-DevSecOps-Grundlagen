@@ -2,9 +2,9 @@
 In diesem Kapitel wird anhand von statischer Code-Analyse und Dependency Scanning aufgezeigt, wie Sicherheitslücken erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden.
 
 \subsection{Nutzung von Statischer Code Analyse}
-Die Nutzung von statischer Code-Analyse ist ein essenzieller Bestandteil moderner Softwareentwicklungsprozesse, um die Codequalität und Sicherheit zu gewährleisten. Es gibt eine Vielzahl von Tools zur Durchführung dieser Analysen, darunter SonarQube, ESLint, Pylint und Coverity. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von SonarQube, basierend auf ihrer umfangreichen Erfahrung und den Vorteilen, die SonarQube bietet. SonarQube wird häufig gewählt, weil es eine umfassende Analyse für eine Vielzahl von Programmiersprachen bietet und sich nahtlos in verschiedene CI/CD-Tools integrieren lässt.
+Die Nutzung von statischer Code-Analyse ist ein essenzieller Bestandteil moderner Softwareentwicklungsprozesse, um die Codequalität und Sicherheit zu gewährleisten~\cite{Bardas2010}. Es gibt eine Vielzahl von Tools zur Durchführung dieser Analysen, darunter SonarQube, ESLint, Pylint und Coverity. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von SonarQube, basierend auf ihrer umfangreichen Erfahrung und den Vorteilen, die SonarQube bietet. SonarQube wird häufig gewählt, weil es eine umfassende Analyse für eine Vielzahl von Programmiersprachen bietet und sich nahtlos in verschiedene CI/CD-Tools integrieren lässt.
 
-Durch die Integration von SonarQube in den CI/CD-Prozess kann diese Analyse automatisiert und kontinuierlich durchgeführt werden. Innerhalb des GitFlow-Workflows ermöglicht es die Einrichtung von Quality Gates in SonarQube, die spezifische Richtlinien und Kriterien definieren, die der Code erfüllen muss. Wenn diese Quality Gates durch die in SonarQube hinterlegten Policies fehlschlagen, wird der Build-Prozess unterbrochen und ein Merge in ein Release verhindert. Dadurch wird sichergestellt, dass nur qualitativ hochwertiger und sicherer Code in die Produktionsumgebung gelangt, wodurch das Risiko von Sicherheitslücken und anderen Problemen erheblich reduziert wird.
+Durch die Integration von SonarQube in den CI/CD-Prozess kann diese Analyse automatisiert und kontinuierlich durchgeführt werden. Innerhalb des GitFlow-Workflows ermöglicht SonarQube  die Einrichtung von Quality Gates. Diese erlauben es, spezifische Richtlinien und Kriterien zu definieren, welche der Code erfüllen muss. Wenn diese Quality Gates durch die in SonarQube hinterlegten Policies fehlschlagen, wird der Build-Prozess unterbrochen und ein Merge in ein Release verhindert. Somit wird sichergestellt, dass nur qualitativ hochwertiger und sicherer Code in die Produktionsumgebung gelangt. Hierdurch wird das Risiko von Sicherheitslücken und anderen Problemen erheblich reduziert.
 
 \subsubsection{Übersicht der Tools zur statischen Code Analyse}
 
@@ -24,6 +24,8 @@ Bandit & Python & Open Source & Sicherheitsanalyse für Python \\ \hline
 \caption{Übersicht von Tools zur statischen Code Analyse}
 \label{tab:static_code_analysis_tools}
 \end{table*}
+
+Wie durch die Tabelle ersichtlich ist, gibt es eine Vielzahl von möglichen Tools auf dem Markt, welche alle ihre eigenen Vor- und Nachteile mit sich bringen. Im folgenden wird sich diese Arbeit auf das Tool SonarQube konzentrieren.
 
 \subsubsection{Integration von SonarQube in die CI/CD-Pipeline}
 
@@ -124,10 +126,12 @@ SonarQube bietet die Möglichkeit, eigene Quality Gates und Regeln zu definieren
 SonarQube wird mit vordefinierten OWASP Policies ausgeliefert, die häufige Sicherheitslücken identifizieren. Dazu gehören:
 
 \begin{itemize}
-    \item \textbf{SQL Injection}: Überprüft auf Anfälligkeiten für SQL-Injection-Angriffe.
-    \item \textbf{Cross-Site Scripting (XSS)}: Erkennt potenzielle XSS-Schwachstellen.
+    \item \textbf{SQL Injection}: Überprüft den Code auf Anfälligkeiten für SQL-Injection-Angriffe.
+    \item \textbf{Cross-Site Scripting (XSS)}: Erkennt potenzielle XSS-Schwachstellen im Code.
     \item \textbf{Insecure Deserialization}: Identifiziert unsichere Deserialisierungen.
 \end{itemize}
+
+Da es sich bei diesen Sicherheitslücken um sehr gängige Schwachstellen handelt, welche effektiv durch statische Codeanalyse erkennbar sind, ist es sehr zu empfehlen den Code auf diese Schwachstellen hin zu analysieren.
 
 \subsubsection{Beispielkonfiguration und Demonstration}
 
@@ -162,9 +166,6 @@ Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit
     \item Bestehen alle Checks, kann der Branch gemerged werden.
 \end{enumerate}
 
-\paragraph{Screenshots und Ergebnisinterpretation}
-
-Fügen Sie hier passende Screenshots ein, die die Ergebnisse der SonarQube-Analyse und den Workflow der GitHub Actions demonstrieren.
 
 \begin{figure*}[h!]
 \centering
@@ -185,11 +186,11 @@ Fügen Sie hier passende Screenshots ein, die die Ergebnisse der SonarQube-Analy
 SonarQube bietet eine Vielzahl von Metriken, um die Qualität und Sicherheit des Codes zu bewerten. Zu den wichtigsten Metriken gehören:
 
 \begin{itemize}
-    \item \textbf{Bugs}: Fehler im Code, die potenziell zu falschem Verhalten führen.
-    \item \textbf{Code Smells}: Hinweise auf Bereiche des Codes, die verbessert werden können.
-    \item \textbf{Vulnerabilities}: Sicherheitslücken, die ausgenutzt werden könnten.
-    \item \textbf{Coverage}: Prozentsatz des Codes, der durch Tests abgedeckt ist.
-    \item \textbf{Duplications}: Anteil des Codes, der dupliziert ist.
+    \item \textbf{Bugs}: Logische Fehler im Code, die potenziell zu falschem Verhalten führen.
+    \item \textbf{Code Smells}: Code der nicht direkt zu Fehlverhalten führt, jedoch durch seine schlechte Struktur schwer verständlich ist und bei Erweiterungen schnell zu Fehlern führen kann.S
+    \item \textbf{Vulnerabilities}: Bekannte Sicherheitslücken, welche von Angreifern ausgenutzt werden könnten.
+    \item \textbf{Coverage}: Der Prozentsatz des Codes, der durch Tests abgedeckt ist.
+    \item \textbf{Duplications}: Anteil des Codes, welcher dupliziert ist.
 \end{itemize}
 
 \paragraph{Beispielhaftes SonarQube Dashboard}

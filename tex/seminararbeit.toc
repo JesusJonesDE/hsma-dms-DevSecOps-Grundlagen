@@ -4,14 +4,41 @@
 \contentsline {subsection}{\numberline {1.2}Finden}{2}{subsection.5}%
 \contentsline {subsection}{\numberline {1.3}Beheben}{2}{subsection.6}%
 \contentsline {subsection}{\numberline {1.4}Verhindern}{2}{subsection.7}%
-\contentsline {section}{\numberline {2}Historische Entwicklung von DevOps zu DevSecOps}{2}{section.8}%
+\contentsline {section}{\numberline {2}Historische Entwicklung von DevOps zu DevSecOps}{3}{section.8}%
 \contentsline {subsection}{\numberline {2.1}Entstehung von DevOps und der Weg zu DevSecOps}{3}{subsection.9}%
 \contentsline {subsection}{\numberline {2.2}TBD: Zusammenarbeit zwischen Entwicklung und Betrieb}{3}{subsection.10}%
 \contentsline {subsection}{\numberline {2.3}TBD: Prinzipien der kontinuierlichen Integration und kontinuierlichen Bereitstellung (CI/CD)}{3}{subsection.11}%
-\contentsline {section}{\numberline {3}Integration von Sicherheitspraktiken in den DevOps-Zyklus}{3}{section.12}%
+\contentsline {section}{\numberline {3}Integration von Statischer Code Analyse in den DevOps-Zyklus}{3}{section.12}%
 \contentsline {subsection}{\numberline {3.1}Nutzung von Statischer Code Analyse}{3}{subsection.13}%
-\contentsline {subsection}{\numberline {3.2}Dependency Scanning und Überprüfung auf Sicherheitslücken}{4}{subsection.14}%
-\contentsline {section}{\numberline {4}Weitere zur Implementeirung by Jonas}{4}{section.15}%
-\contentsline {section}{\numberline {5}Fazit}{4}{section.16}%
-\contentsline {section}{Abkürzungen}{4}{section*.17}%
-\contentsline {section}{Literatur}{4}{section*.17}%
+\contentsline {subsubsection}{\numberline {3.1.1}Übersicht der Tools zur statischen Code Analyse}{4}{subsubsection.14}%
+\contentsline {subsubsection}{\numberline {3.1.2}Integration von SonarQube in die CI/CD-Pipeline}{4}{subsubsection.16}%
+\contentsline {paragraph}{\relax Einrichtung von SonarQube}{4}{section*.17}%
+\contentsline {paragraph}{\relax Integration mit verschiedenen CI/CD-Tools}{4}{section*.36}%
+\contentsline {paragraph}{\relax Konfiguration der GitHub Actions Workflow-Datei}{4}{section*.37}%
+\contentsline {paragraph}{\relax Branch-Regeln und Merge-Policies}{4}{section*.78}%
+\contentsline {subsubsection}{\numberline {3.1.3}Erstellung eigener Policies und Verwendung von OWASP Policies}{4}{subsubsection.79}%
+\contentsline {paragraph}{\relax Beispiele für OWASP Policies in SonarQube}{4}{section*.80}%
+\contentsline {subsubsection}{\numberline {3.1.4}Beispielkonfiguration und Demonstration}{5}{subsubsection.81}%
+\contentsline {subsubsection}{\numberline {3.1.5}Erstellung und Verwendung des GitFlow-Modells}{5}{subsubsection.82}%
+\contentsline {paragraph}{\relax Workflow-Illustration}{5}{figure.84}%
+\contentsline {paragraph}{\relax Beispielhafte Umsetzung in GitHub}{5}{section*.85}%
+\contentsline {paragraph}{\relax Screenshots und Ergebnisinterpretation}{5}{section*.91}%
+\contentsline {subsubsection}{\numberline {3.1.6}Metriken in SonarQube}{5}{subsubsection.94}%
+\contentsline {paragraph}{\relax Beispielhaftes SonarQube Dashboard}{5}{figure.96}%
+\contentsline {subsubsection}{\numberline {3.1.7}Schlussfolgerungen und Best Practices}{5}{subsubsection.97}%
+\contentsline {section}{\numberline {4}Integration von Dependency Scanning und Überprüfung auf Sicherheitslücken in den DevOps-Zyklus}{5}{section.98}%
+\contentsline {subsection}{\numberline {4.1}Nutzung von Dependency Scanning}{5}{subsection.99}%
+\contentsline {subsubsection}{\numberline {4.1.1}Übersicht ähnlicher Produkte}{6}{subsubsection.100}%
+\contentsline {subsubsection}{\numberline {4.1.2}Funktionsweise von Sonatype Nexus IQ}{6}{subsubsection.102}%
+\contentsline {subsubsection}{\numberline {4.1.3}Vorteile von Sonatype Nexus IQ}{8}{subsubsection.104}%
+\contentsline {subsubsection}{\numberline {4.1.4}Beispiel Implementierung für GitHub Actions}{8}{subsubsection.105}%
+\contentsline {paragraph}{\relax Einrichtung der GitHub Actions Workflow-Datei}{8}{section*.106}%
+\contentsline {subsubsection}{\numberline {4.1.5}Integration in den GitFlow}{8}{subsubsection.149}%
+\contentsline {paragraph}{\relax Beispielhafte Umsetzung in GitHub}{8}{section*.150}%
+\contentsline {subsubsection}{\numberline {4.1.6}Sicherheitsgewinn durch Dependency Scanning}{9}{subsubsection.156}%
+\contentsline {subsubsection}{\numberline {4.1.7}Warnhinweise und Einschränkungen}{9}{subsubsection.157}%
+\contentsline {subsubsection}{\numberline {4.1.8}Details zu OWASP}{9}{subsubsection.158}%
+\contentsline {subsubsection}{\numberline {4.1.9}Schlussfolgerungen und Best Practices}{9}{subsubsection.159}%
+\contentsline {section}{\numberline {5}Fazit}{10}{section.160}%
+\contentsline {section}{Abkürzungen}{10}{section*.161}%
+\contentsline {section}{Literatur}{10}{section*.161}%
