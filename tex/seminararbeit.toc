@@ -1,13 +1,17 @@
 \babel@toc {ngerman}{}\relax 
 \contentsline {section}{\numberline {1}Einleitung in DevSecOps}{1}{section.1}%
-\contentsline {section}{\numberline {2}Historische Entwicklung von DevOps zu DevSecOps}{2}{section.4}%
-\contentsline {subsection}{\numberline {2.1}Entstehung von DevOps und der Weg zu DevSecOps}{2}{subsection.5}%
-\contentsline {subsection}{\numberline {2.2}TBD: Zusammenarbeit zwischen Entwicklung und Betrieb}{2}{subsection.6}%
-\contentsline {subsection}{\numberline {2.3}TBD: Prinzipien der kontinuierlichen Integration und kontinuierlichen Bereitstellung (CI/CD)}{2}{subsection.7}%
-\contentsline {section}{\numberline {3}Integration von Sicherheitspraktiken in den DevOps-Zyklus}{2}{section.8}%
-\contentsline {subsection}{\numberline {3.1}Nutzung von Statischer Code Analyse}{2}{subsection.9}%
-\contentsline {subsection}{\numberline {3.2}Dependency Scanning und Überprüfung auf Sicherheitslücken}{3}{subsection.10}%
-\contentsline {section}{\numberline {4}Weitere zur Implementeirung by Jonas}{4}{section.11}%
-\contentsline {section}{\numberline {5}Fazit}{4}{section.12}%
-\contentsline {section}{Abkürzungen}{4}{section*.13}%
-\contentsline {section}{Literatur}{4}{section*.13}%
+\contentsline {subsection}{\numberline {1.1}Steuern}{2}{subsection.4}%
+\contentsline {subsection}{\numberline {1.2}Finden}{2}{subsection.5}%
+\contentsline {subsection}{\numberline {1.3}Beheben}{2}{subsection.6}%
+\contentsline {subsection}{\numberline {1.4}Verhindern}{2}{subsection.7}%
+\contentsline {section}{\numberline {2}Historische Entwicklung von DevOps zu DevSecOps}{2}{section.8}%
+\contentsline {subsection}{\numberline {2.1}Entstehung von DevOps und der Weg zu DevSecOps}{3}{subsection.9}%
+\contentsline {subsection}{\numberline {2.2}TBD: Zusammenarbeit zwischen Entwicklung und Betrieb}{3}{subsection.10}%
+\contentsline {subsection}{\numberline {2.3}TBD: Prinzipien der kontinuierlichen Integration und kontinuierlichen Bereitstellung (CI/CD)}{3}{subsection.11}%
+\contentsline {section}{\numberline {3}Integration von Sicherheitspraktiken in den DevOps-Zyklus}{3}{section.12}%
+\contentsline {subsection}{\numberline {3.1}Nutzung von Statischer Code Analyse}{3}{subsection.13}%
+\contentsline {subsection}{\numberline {3.2}Dependency Scanning und Überprüfung auf Sicherheitslücken}{4}{subsection.14}%
+\contentsline {section}{\numberline {4}Weitere zur Implementeirung by Jonas}{4}{section.15}%
+\contentsline {section}{\numberline {5}Fazit}{4}{section.16}%
+\contentsline {section}{Abkürzungen}{4}{section*.17}%
+\contentsline {section}{Literatur}{4}{section*.17}%
