@@ -1,8 +1,8 @@
 \section{Integration von Statischer Code Analyse in den DevOps-Zyklus}
-In diesem Kapitel wird anhand von statischer Code-Analyse und Dependency Scanning aufgezeigt, wie Sicherheitslücken erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden.
+In diesem Kapitel wird anhand von statischer Code-Analyse und Dependency Scanning aufgezeigt, wie Sicherheitslücken erkannt und behoben werden können, bevor diese in für den Produktionsbetrieb freigegebenen Releases veröffentlicht und in Betrieb genommen werden \cite{vassallo2021continuous}.
 
 \subsection{Nutzung von Statischer Code Analyse}
-Die Nutzung von statischer Code-Analyse ist ein essenzieller Bestandteil moderner Softwareentwicklungsprozesse, um die Codequalität und Sicherheit zu gewährleisten~\cite{Bardas2010}. Es gibt eine Vielzahl von Tools zur Durchführung dieser Analysen, darunter SonarQube, ESLint, Pylint und Coverity. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von SonarQube, basierend auf ihrer umfangreichen Erfahrung und den Vorteilen, die SonarQube bietet. SonarQube wird häufig gewählt, weil es eine umfassende Analyse für eine Vielzahl von Programmiersprachen bietet und sich nahtlos in verschiedene CI/CD-Tools integrieren lässt.
+Die Nutzung von statischer Code-Analyse ist ein essenzieller Bestandteil moderner Softwareentwicklungsprozesse, um die Codequalität und Sicherheit zu gewährleisten \cite{loukides2021software}. Es gibt eine Vielzahl von Tools zur Durchführung dieser Analysen, darunter SonarQube, ESLint, Pylint und Coverity \cite{vassallo2021continuous}. Die Autoren dieses Kapitels fokussieren sich auf die Verwendung von SonarQube, basierend auf ihrer umfangreichen Erfahrung und den Vorteilen, die SonarQube bietet. SonarQube wird häufig gewählt, weil es eine umfassende Analyse für eine Vielzahl von Programmiersprachen bietet und sich nahtlos in verschiedene CI/CD-Tools integrieren lässt \cite{sonarqube2021docs}.
 
 Durch die Integration von SonarQube in den CI/CD-Prozess kann diese Analyse automatisiert und kontinuierlich durchgeführt werden. Innerhalb des GitFlow-Workflows ermöglicht SonarQube  die Einrichtung von Quality Gates. Diese erlauben es, spezifische Richtlinien und Kriterien zu definieren, welche der Code erfüllen muss. Wenn diese Quality Gates durch die in SonarQube hinterlegten Policies fehlschlagen, wird der Build-Prozess unterbrochen und ein Merge in ein Release verhindert. Somit wird sichergestellt, dass nur qualitativ hochwertiger und sicherer Code in die Produktionsumgebung gelangt. Hierdurch wird das Risiko von Sicherheitslücken und anderen Problemen erheblich reduziert.
 
@@ -29,11 +29,11 @@ Wie durch die Tabelle ersichtlich ist, gibt es eine Vielzahl von möglichen Tool
 
 \subsubsection{Integration von SonarQube in die CI/CD-Pipeline}
 
-SonarQube ist ein weit verbreitetes Tool zur statischen Code Analyse, das eine nahtlose Integration in CI/CD-Pipelines unterstützt. Im Folgenden wird gezeigt, wie SonarQube mit GitHub Actions integriert werden kann, um eine automatisierte Analyse des Codes durchzuführen.
+SonarQube ist ein weit verbreitetes Tool zur statischen Code Analyse, das eine nahtlose Integration in CI/CD-Pipelines unterstützt \cite{SonarSource2023}. Im Folgenden wird gezeigt, wie SonarQube mit GitHub Actions integriert werden kann, um eine automatisierte Analyse des Codes durchzuführen.
 
 \paragraph{Einrichtung von SonarQube}
 
-SonarQube kann auf verschiedene Weise eingerichtet werden: lokal, als SaaS oder on-premise. Eine einfache Möglichkeit zur lokalen Einrichtung bietet Docker. Die folgende \texttt{docker-compose.yml} Datei zeigt ein Beispiel:
+SonarQube kann auf verschiedene Weise eingerichtet werden: lokal, als SaaS oder on-premise \cite{SonarSource2021a}. Eine einfache Möglichkeit zur lokalen Einrichtung bietet Docker. Die folgende \texttt{docker-compose.yml} Datei zeigt ein Beispiel:
 
 \begin{lstlisting}
 version: '3'
@@ -57,8 +57,7 @@ services:
 
 \paragraph{Integration mit verschiedenen CI/CD-Tools}
 
-Neben GitHub Actions kann SonarQube auch in andere CI/CD-Tools integriert werden, wie z.B. GitLab CI/CD und Azure DevOps.
-
+Neben GitHub Actions kann SonarQube auch in andere CI/CD-Tools integriert werden, wie z.B. GitLab CI/CD und Azure DevOps \cite{SonarSource2023}.
 
 \paragraph{Konfiguration der GitHub Actions Workflow-Datei}
 
@@ -108,7 +107,7 @@ jobs:
 
 \paragraph{Branch-Regeln und Merge-Policies}
 
-Um sicherzustellen, dass nur Code, der den definierten Sicherheitsstandards entspricht, in die Haupt-Branches integriert wird, können Branch-Regeln und Merge-Policies in GitHub konfiguriert werden. Hierbei wird beispielsweise das Mergen von Branches blockiert, die den OWASP-Standards in SonarQube nicht entsprechen.
+Um sicherzustellen, dass nur Code, der den definierten Sicherheitsstandards entspricht, in die Haupt-Branches integriert wird, können Branch-Regeln und Merge-Policies in GitHub konfiguriert werden. Hierbei wird beispielsweise das Mergen von Branches blockiert, die den OWASP-Standards in SonarQube nicht entsprechen \cite{Foundation2023}.
 
 \begin{itemize}
     \item Gehe zu den Einstellungen des Repositories auf GitHub.
@@ -119,7 +118,7 @@ Um sicherzustellen, dass nur Code, der den definierten Sicherheitsstandards ents
 
 \subsubsection{Erstellung eigener Policies und Verwendung von OWASP Policies}
 
-SonarQube bietet die Möglichkeit, eigene Quality Gates und Regeln zu definieren. Diese können auf verschiedene Metriken und Bedingungen basieren, um sicherzustellen, dass der Code bestimmten Standards entspricht.
+SonarQube bietet die Möglichkeit, eigene Quality Gates und Regeln zu definieren. Diese können auf verschiedene Metriken und Bedingungen basieren, um sicherzustellen, dass der Code bestimmten Standards entspricht \cite{SonarSource2023}.
 
 \paragraph{Beispiele für OWASP Policies in SonarQube}
 
@@ -137,7 +136,7 @@ Da es sich bei diesen Sicherheitslücken um sehr gängige Schwachstellen handelt
 
 \subsubsection{Erstellung und Verwendung des GitFlow-Modells}
 
-Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit Feature-Branches und Release-Branches strukturiert. Es wird folgendermaßen implementiert:
+Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit Feature-Branches und Release-Branches strukturiert. Es wird folgendermaßen implementiert \cite{Driessen2010}:
 
 \begin{itemize}
     \item \textbf{main}: Enthält den Produktionscode.
@@ -151,7 +150,7 @@ Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit
 
 \begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{img/gitflow_workflow.png}
+\includegraphics[width=0.8\textwidth]{img/gitflow_workflow.png}
 \caption{Illustration des GitFlow-Modells}
 \label{fig:gitflow}
 \end{figure*}
@@ -169,21 +168,21 @@ Das GitFlow-Modell ist ein weit verbreitetes Workflow-Modell, das die Arbeit mit
 
 \begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{img/sonarqube_results.jpeg}
+\includegraphics[width=0.8\textwidth]{img/sonarqube_results.jpeg}
 \caption{Ergebnisse der SonarQube-Analyse}
 \label{fig:sonarqube_results}
 \end{figure*}
 
 \begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{img/github_actions_failed_quality_gate.png}
+\includegraphics[width=0.8\textwidth]{img/github_actions_failed_quality_gate.png}
 \caption{GitHub Actions Workflow mit fehlgeschlagenem Quality Gate}
 \label{fig:github_actions_failed_quality_gate}
 \end{figure*}
 
 \subsubsection{Metriken in SonarQube}
 
-SonarQube bietet eine Vielzahl von Metriken, um die Qualität und Sicherheit des Codes zu bewerten. Zu den wichtigsten Metriken gehören:
+SonarQube bietet eine Vielzahl von Metriken, um die Qualität und Sicherheit des Codes zu bewerten. Zu den wichtigsten Metriken gehören \cite{SonarSource2021b}:
 
 \begin{itemize}
     \item \textbf{Bugs}: Logische Fehler im Code, die potenziell zu falschem Verhalten führen.
@@ -197,7 +196,7 @@ SonarQube bietet eine Vielzahl von Metriken, um die Qualität und Sicherheit des
 
 \begin{figure*}[h!]
 \centering
-\includegraphics[width=\textwidth]{img/sonarqube_dashboard.png}
+\includegraphics[width=0.8\textwidth]{img/sonarqube_dashboard.png}
 \caption{Beispiel eines SonarQube Dashboards}
 \label{fig:sonarqube_dashboard}
 \end{figure*}
